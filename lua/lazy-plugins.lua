@@ -57,6 +57,7 @@ require('lazy').setup({
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.diffview-nvim',
   require 'kickstart.plugins.neogit',
   require 'kickstart.plugins.flash-nvim',
   require 'kickstart.plugins.snacks-nvim',
