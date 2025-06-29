@@ -58,6 +58,8 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.neogit',
+  require 'kickstart.plugins.flash-nvim',
+  require 'kickstart.plugins.snacks-nvim',
   require 'kickstart.plugins.yazi-nvim',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
