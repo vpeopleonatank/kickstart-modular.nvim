@@ -15,6 +15,8 @@ return {
           },
         },
       },
+      lazygit = {
+      }
     },
     keys = {
       -- Top Pickers & Explorer
@@ -240,6 +242,27 @@ return {
           Snacks.picker.lsp_workspace_symbols()
         end,
         desc = 'LSP Workspace Symbols',
+      },
+      {
+        '<leader>nl',
+        function()
+          Snacks.lazygit.open(opts)
+        end,
+        desc = 'Open lazygit',
+      },
+      {
+        '<leader>nlv',
+        function()
+          Snacks.lazygit.log(opts)
+        end,
+        desc = 'Open lazygit with log view',
+      },
+      {
+        '<leader>nlc',
+        function()
+          Snacks.lazygit.log_file(opts)
+        end,
+        desc = 'Open lazygit with log of current file',
       },
     },
   },
