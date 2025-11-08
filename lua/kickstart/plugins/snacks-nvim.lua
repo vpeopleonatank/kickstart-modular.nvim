@@ -16,6 +16,9 @@ return {
         },
       },
       lazygit = {
+      },
+      explorer = {
+          trash = false,
       }
     },
     keys = {
