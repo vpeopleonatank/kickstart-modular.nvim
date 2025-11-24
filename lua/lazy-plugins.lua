@@ -65,6 +65,7 @@ require('lazy').setup({
   require 'kickstart.plugins.persistence-nvim',
   require 'kickstart.plugins.guess-indent-nvim',
   require 'kickstart.plugins.typescript-tools',
+  require 'kickstart.plugins.nvim-web-devicons',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
