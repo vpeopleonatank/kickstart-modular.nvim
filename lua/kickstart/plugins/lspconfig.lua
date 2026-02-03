@@ -259,8 +259,8 @@ return {
 
       require('mason-lspconfig').setup {
         ensure_installed = {
-          'python',
-          'go'
+          'pyright',
+          'gopls'
         }, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
         handlers = {
