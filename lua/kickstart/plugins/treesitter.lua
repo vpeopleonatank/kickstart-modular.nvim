@@ -4,12 +4,12 @@ return {
     build = ':TSUpdate',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     config = function()
-      -- Install parsers for these languages
-      local ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go' }
-      require('nvim-treesitter').install(ensure_installed)
-
-      -- Enable treesitter-based highlighting (built into Neovim)
-      vim.treesitter.start = vim.treesitter.start or function() end
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go' },
+        auto_install = true,
+        highlight = { enable = true },
+        indent = { enable = true },
+      }
     end,
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
