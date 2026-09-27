@@ -4,9 +4,25 @@ return {
     build = ':TSUpdate',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     config = function()
+      local has_c_compiler = false
+      for _, exe in ipairs { 'cc', 'gcc', 'clang', 'cl', 'zig' } do
+        if vim.fn.executable(exe) == 1 then
+          has_c_compiler = true
+          break
+        end
+      end
+
+      local ensure_installed = {}
+      -- nvim-treesitter compiles its parsers locally. Existing parsers continue
+      -- to work without a compiler, but installing or updating them does not.
+      -- Defer all install attempts until a compiler is available.
+      if has_c_compiler then
+        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go' }
+      end
+
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'go' },
-        auto_install = true,
+        ensure_installed = ensure_installed,
+        auto_install = has_c_compiler,
         highlight = { enable = true },
         indent = { enable = true },
       }

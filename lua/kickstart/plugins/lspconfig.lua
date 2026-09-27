@@ -235,8 +235,13 @@ return {
             },
           },
         },
-        gopls = {},
       }
+
+      -- Go's language server is built with the Go toolchain. Keep it out of
+      -- Mason's startup install queue when Go is not available on PATH.
+      if vim.fn.executable 'go' == 1 then
+        servers.gopls = {}
+      end
 
       -- Ensure the servers and tools above are installed
       --
@@ -258,10 +263,10 @@ return {
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed = {
-          'pyright',
-          'gopls'
-        }, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        -- mason-tool-installer above derives this list from `servers`.
+        -- Keeping this empty avoids requesting language servers whose
+        -- toolchains are not installed (for example, gopls without Go).
+        ensure_installed = {},
         automatic_installation = false,
         handlers = {
           function(server_name)
